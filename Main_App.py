@@ -5,10 +5,6 @@ from os import system
 import cv2
 import pymysql
 
-root=Tk()
-upload= Tk()
-
-
 def spliting(filename):
     cam = cv2.VideoCapture(filename)
 
