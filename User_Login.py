@@ -1,11 +1,11 @@
-from os import system
 from tkinter import *
+from os import system
 from tkinter import messagebox
 import pymysql
 
 
 
-class User_Login:
+class Login:
     def __init__(self, root):
         self.root = root
         self.root.geometry("500x500")
@@ -28,7 +28,6 @@ class User_Login:
         self.txt_pwd.place(x=220, y=250)
 
         btn_submit=Button(root, text='Login', width=8, bg='grey', command=self.DB_Conactivity).place(x=220, y=300)
-
     def DB_Conactivity(self):
          if self.txt_username.get() == "" or self.txt_pwd.get() == "":
            messagebox.showerror("Error", "All fields are Required", parent=self.root)
@@ -48,6 +47,7 @@ class User_Login:
                     for i in results:
 
                         messagebox.showinfo("Success", "Successfuly Login", parent=self.root)
+                        root.destroy()
                         system('Main_App.py')
 
                         break
@@ -61,7 +61,5 @@ class User_Login:
                 messagebox.showerror("Error", f"Error due to:{str(es)}", parent=self.root)
 
 root = Tk()
-obj=User_Login(root)
+obj=Login(root)
 root.mainloop()
-
-

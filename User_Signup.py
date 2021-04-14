@@ -1,10 +1,10 @@
-from os import system
 from tkinter import *
 from tkinter import messagebox
 import pymysql
+from os import system
 
 
-class User_Signup:
+class Signup:
     def __init__(self, root):
         self.root = root
         self.root.geometry("500x500")
@@ -23,11 +23,11 @@ class User_Signup:
         Gender = Label(root, text="Gender", width=20, font=("bold", 10), bg="black", fg='grey')
         Gender.place(x=50, y=180)
         self.gender = StringVar()
-        self.gender.set("Male")
+        self.gender.set("Female")
         self.btn_male = Radiobutton(root, text="Male", padx=5, variable=self.gender, value='Male', bg="black",
-                                            fg='grey').place(x=235, y=180)
+                                    fg='grey').place(x=235, y=180)
         self.btn_female = Radiobutton(root, text="Female", padx=20, variable=self.gender, value='Female', bg="black",
-                                              fg='grey').place(x=290, y=180)
+                                      fg='grey').place(x=290, y=180)
 
         username = Label(root, text="UserName", width=20, font=("bold", 10), bg="black", fg='grey')
         username.place(x=56, y=230)
@@ -51,6 +51,7 @@ class User_Signup:
             messagebox.showwarning("Error", "All fields are Required", parent=self.root)
         elif self.txt_password.get() != self.txt_conpass.get():
             messagebox.showwarning("Error", "Password & confirm password should be same", parent=self.root)
+
         else:
 
             try:
@@ -77,29 +78,17 @@ class User_Signup:
 
                                     ))
                     messagebox.showinfo("Success", "Successfuly Signup", parent=self.root)
+                    root.destroy()
                     system('User_Login.py')
                 connection.commit()
                 connection.close()
-
-
 
 
             except Exception as es:
                 messagebox.showerror("Error", f"Error due to:{str(es)}", parent=self.root)
 
 
+
 root = Tk()
-obj = User_Signup(root)
+obj = Signup(root)
 root.mainloop()
-
-
-
-
-
-
-
-
-
-
-
-

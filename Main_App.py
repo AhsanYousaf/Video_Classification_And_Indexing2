@@ -4,22 +4,28 @@ from tkinter import messagebox, filedialog
 from os import system
 import cv2
 import pymysql
-
 root=Tk()
 upload= Tk()
 
+
 def spliting(filename):
     cam = cv2.VideoCapture(filename)
+    videoename = os.path.basename(filename)
 
     try:
 
         # creating a folder named data
-        if not os.path.exists('data'):
-            os.makedirs('data')
+        if not os.path.exists('data/'+videoename.rsplit('.', 1)[0]):
+            os.makedirs('data/'+videoename.rsplit('.', 1)[0])
 
         # if not created then raise error
     except OSError:
-        print('Error: Creating directory of data')
+        print('Error: Creating directory ')
+    #audio extraction
+    video = moviepy.editor.VideoFileClip(filename)  # Entering the videofile
+    audio = video.audio
+    audio.write_audiofile(r"./data/"+ videoename.rsplit('.', 1)[0]+"/"+videoename.rsplit('.', 1)[0]+".mp3")
+
 
     # frame
     currentframe = 0
@@ -31,7 +37,7 @@ def spliting(filename):
 
         if ret:
             # if video is still left continue creating images
-            name = './data/frame' + str(currentframe) + '.jpg'
+            name = './data/'+ videoename.rsplit('.', 1)[0]+"/"+videoename.rsplit('.', 1)[0] + str(currentframe) + '.jpg'
             print('Creating...' + name)
 
             # writing the extracted images
@@ -49,6 +55,7 @@ def spliting(filename):
 
 
 class Main_App:
+
     def __init__(self, root):
         self.root = root
         self.root.geometry("500x500")
@@ -75,18 +82,20 @@ class Main_App:
         if(filename!=""):
             spliting(filename)
             try:
-                    connection = pymysql.connect(host="localhost", user="root", password="", database="db_connectivity")
-                    cursor = connection.cursor()
-                    cursor.execute("insert into video_db (video) values (%s)",(filename))
-                    connection.commit()
-                    connection.close()
-                    messagebox.showinfo("Success", "Successfuly upload", parent=upload)
-                    # system('Main_App.py')
+                connection = pymysql.connect(host="localhost", user="root", password="", database="db_connectivity")
+                cursor = connection.cursor()
+                cursor.execute("insert into video_db (video) values (%s)",(filename))
+                connection.commit()
+                connection.close()
+                messagebox.showinfo("Success", "Successfuly upload", parent=upload)
+                # system('Main_App.py')
             except Exception as es:
-                    messagebox.showerror("Error", f"Error due to:{str(es)}", parent=upload)
+                messagebox.showerror("Error", f"Error due to:{str(es)}", parent=upload)
+
 
     def logout(self):
-         messagebox.showinfo("logout", "doing logout", parent=self.root)
+        root.destroy()
+        system('User_Login.py')
     def next(self):
         messagebox.showinfo("next", "move to next video", parent=self.root)
     def back(self):
