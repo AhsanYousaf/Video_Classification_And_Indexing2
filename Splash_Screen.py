@@ -14,10 +14,12 @@ splash_root.configure(background="black")
 #background.pack()
 
 def login():
-    splash_root.destroy()
+
+    #splash_root.destroy()
     system('User_Login.py')
 
 def signup():
+
     splash_root.destroy()
     system('User_Signup.py')
 
@@ -42,7 +44,4 @@ def main():
 
 
 
-splash_root.after(1500, main)
-
-
-mainloop()
+splash_root.after(

@@ -3,9 +3,10 @@ from tkinter import *
 from tkinter import messagebox, filedialog
 from os import system
 import cv2
+import moviepy.editor
 import pymysql
 root=Tk()
-upload= Tk()
+#upload= Tk()
 
 
 def spliting(filename):
@@ -87,10 +88,10 @@ class Main_App:
                 cursor.execute("insert into video_db (video) values (%s)",(filename))
                 connection.commit()
                 connection.close()
-                messagebox.showinfo("Success", "Successfuly upload", parent=upload)
+                messagebox.showinfo("Success", "Successfuly upload", parent=self.root)
                 # system('Main_App.py')
             except Exception as es:
-                messagebox.showerror("Error", f"Error due to:{str(es)}", parent=upload)
+                messagebox.showerror("Error", f"Error due to:{str(es)}", parent=self.root)
 
 
     def logout(self):
@@ -100,5 +101,6 @@ class Main_App:
         messagebox.showinfo("next", "move to next video", parent=self.root)
     def back(self):
         messagebox.showinfo("back", "go to previous video", parent=self.root)
+
 obj = Main_App(root)
 root.mainloop()
