@@ -8,18 +8,16 @@ splash_root.title("Splash Screem")
 splash_root.geometry("800x600")
 splash_root.configure(background="black")
 
-#background_image = PhotoImage(file="ahsan.png")
+background_image = PhotoImage(file="splash-01.png")
 
-#background = Label(splash_root, image=background_image, bd=0)
-#background.pack()
+background = Label(splash_root, image=background_image, bd=0)
+background.pack()
 
 def login():
-
-    #splash_root.destroy()
+    splash_root.destroy()
     system('User_Login.py')
 
 def signup():
-
     splash_root.destroy()
     system('User_Signup.py')
 
@@ -44,4 +42,7 @@ def main():
 
 
 
-splash_root.after(
+splash_root.after(1500, main)
+
+
+mainloop()
