@@ -14,6 +14,7 @@ background = Label(splash_root, image=background_image, bd=0)
 background.pack()
 
 def login():
+
     splash_root.destroy()
     system('User_Login.py')
 
