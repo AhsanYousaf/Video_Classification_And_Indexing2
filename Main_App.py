@@ -37,8 +37,9 @@ def spliting(filename):
         ret, frame = cam.read()
 
         if ret:
-            # if video is still left continue creating images
-            name = './data/'+ videoename.rsplit('.', 1)[0]+"/"+videoename.rsplit('.', 1)[0] + str(currentframe) + '.jpg'
+            # if video is still left continue creating
+
+            name = './data/'+ videoename.rsplit('.', 1)[0]+"/F" + str(currentframe) + '.jpg'
             print('Creating...' + name)
 
             # writing the extracted images
@@ -48,6 +49,8 @@ def spliting(filename):
             # show how many frames are created
             currentframe += 1
         else:
+            #currentframe-=1
+            return currentframe
             break
 
     # Release all space and windows once done
@@ -81,14 +84,16 @@ class Main_App:
         filename = filedialog.askopenfilename(initialdir="/", title="select a file",
                                               filetype=(("mp4", "*.mp4"), ("All Files", "*.*")))
         if(filename!=""):
-            spliting(filename)
+            frameno=spliting(filename)
+            no_f =str(frameno)
+            videoename = os.path.basename(filename)
             try:
                 connection = pymysql.connect(host="localhost", user="root", password="", database="db_connectivity")
                 cursor = connection.cursor()
                 cursor.execute("insert into video_db (video) values (%s)",(filename))
                 connection.commit()
                 connection.close()
-                messagebox.showinfo("Success", "Successfuly upload", parent=self.root)
+                messagebox.showinfo("Success", "Successfuly upload\n video splite into "+no_f+" frames and audio saved in /data/ "+ videoename.rsplit('.', 1)[0], parent=self.root)
                 # system('Main_App.py')
             except Exception as es:
                 messagebox.showerror("Error", f"Error due to:{str(es)}", parent=self.root)
@@ -101,6 +106,5 @@ class Main_App:
         messagebox.showinfo("next", "move to next video", parent=self.root)
     def back(self):
         messagebox.showinfo("back", "go to previous video", parent=self.root)
-
 obj = Main_App(root)
 root.mainloop()
