@@ -78,6 +78,5 @@ def start_video(video_path ):
 	cap.release()
 	return objList
 
-checking
 
 
