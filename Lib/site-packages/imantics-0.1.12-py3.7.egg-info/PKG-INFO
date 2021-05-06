@@ -1,0 +1,74 @@
+Metadata-Version: 2.1
+Name: imantics
+Version: 0.1.12
+Summary: Python package for managing image annotations
+Home-page: https://github.com/jsbroks/imantics
+Author: Justin Brooks
+Author-email: jsbroks@gmail.com
+License: MIT
+Description: # Image Semantics
+        
+        <p align="center">
+          <a href="/jsbroks/imantics/stargazers">
+            <img src="https://img.shields.io/github/stars/jsbroks/imantics.svg">
+          </a>
+          <a href="/jsbroks/imantics/issues">
+            <img src="https://img.shields.io/github/issues/jsbroks/imantics.svg">
+          </a>
+          <a href="https://tldrlegal.com/license/mit-license">
+            <img src="https://img.shields.io/github/license/mashape/apistatus.svg">
+          </a>
+          <a href="https://travis-ci.org/jsbroks/imantics">
+            <img src="https://travis-ci.org/jsbroks/imantics.svg?branch=master">
+          </a>
+          <a href="https://imantics.readthedocs.io/en/latest/?badge=latest">
+            <img src="https://readthedocs.org/projects/imantics/badge/?version=latest">
+          </a>
+          <a href="https://pypi.org/project/imantics/">
+            <img src="https://img.shields.io/pypi/v/imantics.svg">
+          </a>
+          <a href="https://pypi.org/project/imantics/">
+            <img src="https://img.shields.io/pypi/dm/imantics.svg">
+          </a>
+        </p>
+        
+        Image understanding is widely used in many areas like satellite imaging, robotic technologies, sensory networks, medical and biomedical imaging, intelligent transportation systems, etc. Recently semantic analysis has become an active research topic aimed at resolving the gap between low level image features and high level semantics which is a promoting approach in image understanding.
+        
+        With many image annotation semantics existing in the field of computer vision, it can become daunting to manage. This package provides the ability to convert and visualize many different types of annotation formats for object dectection and localization.
+        
+        Currently Support Formats:
+        
+        - COCO Format
+        - Binary Masks
+        - YOLO
+        - VOC
+        
+        <p align="center">If you enjoy my work please consider supporting me</p>
+        <p align="center">
+          <a href="https://www.patreon.com/jsbroks">
+            <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="120">
+          </a>
+        </p>
+        
+        ## Installing
+        
+        ```
+        pip install imantics
+        ```
+        
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Multimedia :: Sound/Audio :: Capture/Recording
+Classifier: Topic :: Multimedia :: Graphics :: Capture
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=2.7
+Description-Content-Type: text/markdown

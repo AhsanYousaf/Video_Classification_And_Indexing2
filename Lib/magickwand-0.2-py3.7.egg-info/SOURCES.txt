@@ -1,0 +1,15 @@
+README
+setup.cfg
+setup.py
+magickwand/__init__.py
+magickwand/color.py
+magickwand/image.py
+magickwand.egg-info/PKG-INFO
+magickwand.egg-info/SOURCES.txt
+magickwand.egg-info/dependency_links.txt
+magickwand.egg-info/top_level.txt
+magickwand/api/__init__.py
+magickwand/api/const.py
+magickwand/api/functions.py
+magickwand/api/lib.py
+magickwand/api/types.py
